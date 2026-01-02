@@ -33,7 +33,7 @@ This setup is designed for **fast local development**, **edge/serverless deploym
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/emmathedeveloper/your-repo.git
+git clone https://github.com/emmathedeveloper/nitro-drizzle-react-kit.git
 cd your-repo
 ```
 
@@ -57,14 +57,14 @@ npm install
 
 ### 3️⃣ Environment Variables
 
-Create a `.env` file in the root:
+Create a `.env.production` file in the root:
 
 ```env
 DATABASE_URL="libsql://your-db.turso.io"
 DATABASE_AUTH_TOKEN="your_turso_token"
 ```
 
-For local SQLite development:
+For local SQLite development, create a `.env.local` file in the root:
 
 ```env
 DATABASE_URL="file:./dev.db"
@@ -74,13 +74,8 @@ DATABASE_URL="file:./dev.db"
 
 ## 🗄️ Database Setup (Drizzle + Turso)
 
-### Generate migrations
 
-```bash
-bun run drizzle:generate
-```
-
-### Push schema to database
+### Generate migrations & Push schema to database
 
 ```bash
 bun run drizzle:push
@@ -96,20 +91,6 @@ bun run drizzle:studio
 
 ## 🧪 Development
 
-### Start backend (Nitro)
-
-```bash
-bun run dev:server
-```
-
-### Start frontend (React)
-
-```bash
-bun run dev:client
-```
-
-Or start everything together:
-
 ```bash
 bun run dev
 ```
@@ -121,13 +102,13 @@ bun run dev
 Nitro API routes live in:
 
 ```
-server/api/
+server/routes/api/
 ```
 
 Example:
 
 ```
-server/api/users.get.ts
+server/routes/api/users.get.ts
 ```
 
 Accessible at:
@@ -185,11 +166,9 @@ Perfect for MVPs, SaaS products, internal tools, and APIs.
 | Script             | Description            |
 | ------------------ | ---------------------- |
 | `dev`              | Run frontend & backend |
-| `dev:server`       | Start Nitro server     |
-| `dev:client`       | Start React app        |
 | `build`            | Build for production   |
-| `drizzle:generate` | Generate migrations    |
 | `drizzle:push`     | Push schema            |
+| `drizzle:seed`     | Seed Data              |
 | `drizzle:studio`   | Open DB studio         |
 
 ---
